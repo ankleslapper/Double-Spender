@@ -73,7 +73,7 @@ jQuery(function($){
 				loadajax.abort();
 			}
 			
-			loadajax = $.getJSON("http://btc.blockr.io/api/v1/address/unspent/"+publickey,function(rec){
+			loadajax = $.getJSON("https://btc.blockr.io/api/v1/address/unspent/"+publickey+'/?callback=?',function(rec){
 				inputs = rec.data.unspent;
 				$.each(inputs, function(i, v){
 					balance += parseFloat(v.amount);
