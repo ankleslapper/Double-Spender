@@ -131,6 +131,7 @@ jQuery(function($){
 				});
 				
 				var a = 0;
+				coinjs.compressed = true;
 				var tx = coinjs.transaction();
 				var tx2 = coinjs.transaction();
 				
@@ -150,10 +151,15 @@ jQuery(function($){
 					tx.addoutput(change, changeamt);
 				}
 				
-				$('#tx1 textarea').val(tx.sign(privatekey));
-				$('#tx2 textarea').val(tx2.sign(privatekey));
+				var txunspent1 = tx.deserialize(tx.serialize()); 
+				var txunspent2 = tx.deserialize(tx2.serialize()); 
+
+				// then sign
+				$('#tx1 textarea').val(txunspent1.sign(privatekey));
+				$('#tx2 textarea').val(txunspent2.sign(privatekey));
 				$('#tx1, #tx2').show();
-				//$("#transactionCreate .txSize").html(tx.size());
+			}else{
+				error('Balance is zero','#amount');
 			}
 			return false;
 		});
