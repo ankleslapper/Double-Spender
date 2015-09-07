@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Double Spender</title>
+    <title>Bitcoin Double Spender</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -19,10 +19,10 @@
 <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#" style="color:#FFF;">Double Spender</a>
+      <a class="navbar-brand" href="#" style="color:#FFF;"><i class="fa fa-btc"></i> Bitcoin Double Spender</a>
     </div>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li><a href="#" data-toggle="modal" data-target="#help"><i class="fa fa-question-circle"></i> Help</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
             <i class="fa fa-cogs"></i> <span class="caret"></span></a>
@@ -52,7 +52,7 @@
 
 <div class="container" style="margin-bottom:20px;">
     <p class="well">
-    	Note that double spending has a high likelyhood of failure, and the initial transaction may be confirmed.
+    	Note that double spending has a high likelyhood of failure, and the initial transaction may be confirmed.  <a href="#" data-toggle="modal" data-target="#help"><i class="fa fa-question-circle"></i> Help</a>
     </p>
     <div class="row">
     	<div class="col-lg-12">
@@ -115,20 +115,40 @@
 <footer class="text-center">
 	<p><small>Use at your own risk; only with addresses contain small balances that you are willing to lose.  Suggest that you decode and check the transactions before broadcasting them.</small></p>
 	<p><small>Largely based on open source javascript provided by <a href="http://coinb.in">Coinb.in</a> | Data sourced from <a href="https://blockr.io/">Blockr.io</a> | UI based on <a href="http://getbootstrap.com/">Bootstrap</a></small></p>
+    <p><strong><a href="https://github.com/ankleslapper/Double-Spender/"><i class="fa fa-github"></i> Fork Me On GitHub</a></strong></p>
 </footer>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/crypto-min.js"></script>
-		<script type="text/javascript" src="js/crypto-sha256.js"></script>
-		<script type="text/javascript" src="js/crypto-sha256-hmac.js"></script>
-		<script type="text/javascript" src="js/sha512.js"></script>
-		<script type="text/javascript" src="js/ripemd160.js"></script>
-		<script type="text/javascript" src="js/aes.js"></script>
+<div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="helplabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="helplabel">Double Spend Help</h4>
+      </div>
+      <div class="modal-body">
+        <p>This tool allows you to generate two transactions using the same Bitcoins.</p>
+        <p>The first transaction will have a very low fee, and will only be accepted by a few nodes, but after some time it should make its way to the recipient.</p>
+        <p>The second transaction will have a generous fee and will be broadcast more easily to many nodes.</p>
+        <p>Publish the first transaction and wait for the recipient to receive the unconfirmed transaction.  You can then broadcast the second transaction and it should reach miners first as long as the first transaction has not yet been confirmed.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/crypto-min.js"></script>
+<script type="text/javascript" src="js/crypto-sha256.js"></script>
+<script type="text/javascript" src="js/crypto-sha256-hmac.js"></script>
+<script type="text/javascript" src="js/sha512.js"></script>
+<script type="text/javascript" src="js/ripemd160.js"></script>
+<script type="text/javascript" src="js/aes.js"></script>
 
-		<script type="text/javascript" src="js/jsbn.js"></script>
-		<script type="text/javascript" src="js/ellipticcurve.js"></script>
+<script type="text/javascript" src="js/jsbn.js"></script>
+<script type="text/javascript" src="js/ellipticcurve.js"></script>
 
-		<script type="text/javascript" src="js/coin.js"></script>
-		<script src="js/doublespend.js"></script>
+<script type="text/javascript" src="js/coin.js"></script>
+<script src="js/doublespend.js"></script>
 </body>
 </html>
